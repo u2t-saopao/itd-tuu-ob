@@ -22,7 +22,7 @@
         $strRet = file_get_contents($url);
         $strRet = json_decode($strRet);
 	 	$light1 = $strRet->feeds[0]->field1;
-         if($light1 == "1"){
+         if($light1 == 1){
             // $url = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=0";
             // $strRet = file_get_contents($url);
             $rep_msg ['text'] = "ON";
