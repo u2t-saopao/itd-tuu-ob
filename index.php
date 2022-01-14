@@ -18,7 +18,9 @@
     //$url = "https://api.thingspeak.com/channels/1632897/feeds.json?results=1";
     
     if($recv_msg == "Hi") {
-		$rep_msg ['text'] = "Hi";
+        $url = "https://api.thingspeak.com/channels/1632897/feeds.json?results=1";
+        $strRet = file_get_contents($url);
+		$rep_msg ['text'] = $strRet;
 		$rep_msg ['type'] = 'text';
     }else 
         $rep_msg ['text'] = "Sorry";
