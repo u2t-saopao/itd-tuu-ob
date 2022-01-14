@@ -27,17 +27,20 @@
             // $strRet = file_get_contents($url);
             $rep_msg ['text'] = "ON";
 		    $rep_msg ['type'] = 'text';
-         }else (
+         }else {
             // $url = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=1";
             // $strRet = file_get_contents($url);
             $rep_msg ['text'] = "OFF";
 		    $rep_msg ['type'] = 'text';
-            )
+         }
+            
 
 		
-    }else 
+    }else {
         $rep_msg ['text'] = "Sorry";
 		$rep_msg ['type'] = 'text';
+    }
+        
     // }else if($recv_msg == "l1") {
     //     $url = "https://api.thingspeak.com/channels/1632897/feeds.json?results=1";
     //     $strRet = file_get_contents($url);
