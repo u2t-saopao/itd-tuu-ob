@@ -18,10 +18,7 @@
 
     if($recv_msg == "light1 ON") {
 		$url = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=1";
-		$strRet = file_get_contents($url);
-		$strRet = json_decode($strRet);
-		$temp = $strRet->feeds[0]->field1;
-		$rep_msg['text'] = $temp;
+		$rep_msg['text'] = "light1 ON";
 		$rep_msg['type']='text';
 	}else if($recv_msg == "light1 OFF") {
 		$url = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=0";
