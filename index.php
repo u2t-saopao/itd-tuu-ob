@@ -20,7 +20,7 @@
     if($recv_msg == "Hi") {
 		$rep_msg ['text'] = "Hi";
 		$rep_msg ['type'] = 'text';
-    else if($recv_msg == "l1") {
+    }else if($recv_msg == "l1") {
         $url = "https://api.thingspeak.com/channels/1632897/feeds.json?results=1";
         $strRet = file_get_contents($url);
 		//$strRet = json_decode($strRet);
