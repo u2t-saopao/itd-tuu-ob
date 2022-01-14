@@ -74,10 +74,6 @@
 		$rep_msg['text'] = $temp;
 		$rep_msg['type']='text';
     }
-    else {
-        $rep_msg ['text'] = "Sorry";
-		$rep_msg ['type'] = 'text';
-    }
         	
 
 	$messages['messages'][0] =  $rep_msg;
