@@ -17,7 +17,7 @@
 	$rep_msg = [];
     //$url = "https://api.thingspeak.com/channels/1632897/feeds.json?results=1";
     
-    if($recv_msg == "Hi") {
+    if($recv_msg == "เปิด-ปิดไฟ1") {
         $url = "https://api.thingspeak.com/channels/1632897/feeds.json?results=1";
         $strRet = file_get_contents($url);
         $strRet = json_decode($strRet);
@@ -25,7 +25,6 @@
         $url2 = "";
          if($light1 == 1){
             $url2 = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=0";
-            
          }else {
             $url2 = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=1";
          }
@@ -36,57 +35,51 @@
             $rep_msg ['text'] = "ดำเนินการเรียบร้อยแล้ว"; 
          }
 		$rep_msg ['type'] = 'text';    
-
-		
-    }else {
+    }else if($recv_msg == "เปิด-ปิดไฟ2") {
+        $url = "https://api.thingspeak.com/channels/1632897/feeds.json?results=1";
+        $strRet = file_get_contents($url);
+        $strRet = json_decode($strRet);
+	 	$light1 = $strRet->feeds[0]->field2;
+        $url2 = "";
+         if($light1 == 1){
+            $url2 = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field2=0";
+         }else {
+            $url2 = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field2=1";
+         }
+        $strRet = file_get_contents($url2);
+         if ($strRet == 0){
+            $rep_msg ['text'] = "กรุณารอ 15 วินาที";
+         }else {
+            $rep_msg ['text'] = "ดำเนินการเรียบร้อยแล้ว"; 
+         }
+		$rep_msg ['type'] = 'text';
+    }else if ($recv_msg == "อุณหภูมิ"){
+        $url = "https://api.thingspeak.com/channels/1632897/feeds.json?results=1";
+		$strRet = file_get_contents($url);
+		$strRet = json_decode($strRet);
+		$temp = $strRet->feeds[0]->field3;
+		$rep_msg['text'] = $temp;
+		$rep_msg['type']='text';
+    }else if ($recv_msg == "ความชื้น"){
+        $url = "https://api.thingspeak.com/channels/1632897/feeds.json?results=1";
+		$strRet = file_get_contents($url);
+		$strRet = json_decode($strRet);
+		$temp = $strRet->feeds[0]->field4;
+		$rep_msg['text'] = $temp;
+		$rep_msg['type']='text';
+    }else if ($recv_msg == "กระแสไฟฟ้า"){
+        $url = "https://api.thingspeak.com/channels/1632897/feeds.json?results=1";
+		$strRet = file_get_contents($url);
+		$strRet = json_decode($strRet);
+		$temp = $strRet->feeds[0]->field5;
+		$rep_msg['text'] = $temp;
+		$rep_msg['type']='text';
+    }
+    else {
         $rep_msg ['text'] = "Sorry";
 		$rep_msg ['type'] = 'text';
     }
-        
-    // }else if($recv_msg == "l1") {
-    //     $url = "https://api.thingspeak.com/channels/1632897/feeds.json?results=1";
-    //     $strRet = file_get_contents($url);
-	// 	//$strRet = json_decode($strRet);
-	// 	//$light1 = $strRet->feeds[0]->field1;
-	// 	$rep_msg['text'] = $strRet;
-	// 	$rep_msg['type']='text';
-	// }else if($recv_msg == "light1 OFF") {
-	// 	$strRet = file_get_contents($url);
-	// 	$strRet = json_decode($strRet);
-	// 	$light1 = $strRet->feeds[0]->field1;
-    //         if($light1 == "1"){
-    //             $l1 = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=0";
-    //         }else ($light1 == "0"){
-    //             $l1 = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=0";
-    //         }
-	// 	$rep_msg['text'] = "light1 OFF";
-	// 	$rep_msg['type']='text';}
-	// }else if($recv_msg == "light2 ON") {
-	// 	$url = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field2=1";
-	// 	$strRet = file_get_contents($url);
-	// 	$strRet = json_decode($strRet);
-	// 	$pm = $strRet->feeds[0]->field3;
-	// 	$rep_msg['text'] = $pm;
-	// 	$rep_msg['type']='text';
-	// }else if($recv_msg == "light2 OFF") {
-	// 	$url = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field2=0";
-	// 	$strRet = file_get_contents($url);
-	// 	$strRet = json_decode($strRet);
-	// 	$pict = $strRet->feeds[0]->field4;
-	// 	$rep_msg['text'] = $pict;
-	// 	$rep_msg['type']='text';
-	// }else if($recv_msg == "Temp") {
-	// 	$rep_msg['originalContentUrl'] = "https://thingspeak.com/channels/1632897/charts/3";
-	// 	$rep_msg['previewImageUrl'] = "https://thingspeak.com/channels/1632897/charts/3";
-	// 	$rep_msg['type']='image';
-    // }else if($recv_msg == "Electric") {
-	// 	$url = "https://api.thingspeak.com/channels/1555446/feeds.json?results=1";
-	// 	$strRet = file_get_contents($url);
-	// 	$strRet = json_decode($strRet);
-	// 	$dash = $strRet->feeds[0]->field5;
-	// 	$rep_msg['text'] = $dash;
-	// 	$rep_msg['type']='text';
-    // }	
+        	
 
 	$messages['messages'][0] =  $rep_msg;
 
