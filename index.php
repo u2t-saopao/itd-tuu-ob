@@ -15,7 +15,6 @@
 	$messages = [];
 	$messages['replyToken'] = $replyToken;
 	$rep_msg = [];
-    //$url = "https://api.thingspeak.com/channels/1632897/feeds.json?results=1";
     
     if($recv_msg == "เปิด-ปิดไฟ1") {
         $url = "https://api.thingspeak.com/channels/1632897/feeds.json?results=1";
