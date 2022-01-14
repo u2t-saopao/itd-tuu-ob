@@ -15,12 +15,13 @@
 	$messages = [];
 	$messages['replyToken'] = $replyToken;
 	$rep_msg = [];
-    $url = "https://api.thingspeak.com/channels/1632897/feeds.json?results=1";
+    //$url = "https://api.thingspeak.com/channels/1632897/feeds.json?results=1";
 
     if($recv_msg == "light1 ON") {
+        $url = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=0";
         $strRet = file_get_contents($url);
 		$strRet = json_decode($strRet);
-		$light1 = $strRet->feeds[0]->field1;
+		$light1 = $strRet->field1;
             if($light1 == "0"){
                 $l1 = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=1";
             }else ($light1 == "1"){
