@@ -23,14 +23,14 @@
         $strRet = json_decode($strRet);
 	 	$light1 = $strRet->feeds[0]->field1;
          if($light1 == "1"){
-            $url = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=0";
-            $strRet = file_get_contents($url);
-            $rep_msg ['text'] = $strRet;
+            // $url = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=0";
+            // $strRet = file_get_contents($url);
+            $rep_msg ['text'] = "ON";
 		    $rep_msg ['type'] = 'text';
          }else (
-            $url = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=1";
-            $strRet = file_get_contents($url);
-            $rep_msg ['text'] = $strRet;
+            // $url = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=1";
+            // $strRet = file_get_contents($url);
+            $rep_msg ['text'] = "OFF";
 		    $rep_msg ['type'] = 'text';
             )
 
