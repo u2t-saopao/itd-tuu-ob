@@ -46,7 +46,7 @@
 		$rep_msg['type']='text';
 	}else if($recv_msg == "Temp") {
 		$rep_msg['originalContentUrl'] = "https://thingspeak.com/channels/1632897/charts/3";
-		$rep_msg['previewImageUrl'] = "https://i.imgur.com/ObxhSgt.png";
+		$rep_msg['previewImageUrl'] = "https://thingspeak.com/channels/1632897/charts/3";
 		$rep_msg['type']='image';
     }else if($recv_msg == "Electric") {
 		$url = "https://api.thingspeak.com/channels/1555446/feeds.json?results=1";
@@ -62,7 +62,7 @@
 	$encodeJson = json_encode($messages);
 
 	$LINEDatas['url'] = "https://api.line.me/v2/bot/message/reply";
- 	$LINEDatas['token'] = "SX6uCrFx9UWukh6q05gKkN5Zhgr3JkoOGBm/nRl4cRlvubu47OIwYm2DTenGjJg/SJVzy65LGKWdGgxUNeppPtIyoLHcTl07xnCDh/kLRhBobWhVR1h1D8VboLpJY4oyZMmULZc0+/BNtSUdc3WQhQdB04t89/1O/w1cDnyilFU=";
+ 	$LINEDatas['token'] = "2HXDSd8UG3mxBOboLxq15zE3JfUBFqn+2ThJauXxbWVm8ye7zCu5YNxSxOqin2ZDSJVzy65LGKWdGgxUNeppPtIyoLHcTl07xnCDh/kLRhC5b7kadxPEEVrGG48bK5T2XiFTJkzaWiHcZgj9M8KgbAdB04t89/1O/w1cDnyilFU=";
   	$results = sentMessage($encodeJson,$LINEDatas);
 
 	/*Return HTTP Request 200*/
