@@ -23,9 +23,9 @@
 		$strRet = json_decode($strRet);
 		$light1 = $strRet->field1;
             if($light1 == "0"){
-                $l1 = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=1";
+                $url = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=1";
             }else ($light1 == "1"){
-                $l1 = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=1";
+                $url = "https://api.thingspeak.com/update?api_key=ZRZROJRHC73CR4LJ&field1=1";
             }
 		$rep_msg['text'] = "light1 ON";
 		$rep_msg['type']='text';
