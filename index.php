@@ -57,7 +57,7 @@
 		$strRet = file_get_contents($url);
 		$strRet = json_decode($strRet);
 		$temp = $strRet->feeds[0]->field3;
-		$result = round($temp,0);
+		$result = round($temp,1);
 		$rep_msg['text'] = $temp;
 		$rep_msg['type']='text';
     }else if ($recv_msg == "ความชื้น"){
